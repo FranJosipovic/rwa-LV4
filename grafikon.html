@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Weather info" />
+    <meta name="keywords" content="weather" />
+    <!--dodati link za css dokumente -->
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./grafikon.style.css" />
+    <title>Weather Info</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Dobrodosli na moju web stranicu</h1>
+      <nav>
+        <ul>
+          <li class="active"><a href="index.html">Pocetna</a></li>
+          <li><a href="slike.html">Galerija</a></li>
+          <li><a href="grafikon.html">Grafikon</a></li>
+        </ul>
+        <div class="dropdown">
+          <i class="fa fa-bars"></i>
+          <ul>
+            <li><a href="index.html">Pocetna</a></li>
+            <li><a href="slike.html">Galerija</a></li>
+            <li class="active"><a href="grafikon.html">Grafikon</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section>
+      <h1>Humidity</h1>
+      <div class="barchart">
+        <div class="simple-bar-chart">
+          <div class="item" style="--clr: #5eb344; --val: 69">
+            <div class="label">Hrvatska</div>
+            <div class="value">69%</div>
+          </div>
+
+          <div class="item" style="--clr: #fcb72a; --val: 82">
+            <div class="label">Indija</div>
+            <div class="value">82%</div>
+          </div>
+
+          <div class="item" style="--clr: #f8821a; --val: 48">
+            <div class="label">Njemačka</div>
+            <div class="value">48%</div>
+          </div>
+
+          <div class="item" style="--clr: #e0393e; --val: 35">
+            <div class="label">Slovenija</div>
+            <div class="value">35%</div>
+          </div>
+
+          <div class="item" style="--clr: #963d97; --val: 23">
+            <div class="label">Srbija</div>
+            <div class="value">23%</div>
+          </div>
+
+          <div class="item" style="--clr: #069cdb; --val: 57">
+            <div class="label">Grčka</div>
+            <div class="value">57%</div>
+          </div>
+        </div>
+      </div>
+      <div class="piechart">
+        <div>
+          <p>Hrvatska</p>
+          <div class="pie animate" style="--p: 69; --c: #5eb344">69%</div>
+        </div>
+        <div>
+          <p>Indija</p>
+          <div class="pie animate" style="--p: 82; --c: #fcb72a; --b: 10px">
+            82%
+          </div>
+        </div>
+        <div>
+          <p>Njemačka</p>
+          <div class="pie animate" style="--p: 48; --c: #f8821a; --b: 15px">
+            48%
+          </div>
+        </div>
+        <div>
+          <p>Slovenija</p>
+          <div class="pie animate" style="--p: 35; --c: #e0393e">35%</div>
+        </div>
+        <div>
+          <p>Srbija</p>
+          <div class="pie animate" style="--p: 23; --c: #963d97">23%</div>
+        </div>
+        <div>
+          <p>Grčka</p>
+          <div class="pie animate" style="--p: 57; --c: #069cdb">57%</div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
