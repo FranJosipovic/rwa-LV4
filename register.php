@@ -6,14 +6,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $username = $_POST['username'];
+    $isAdmin = isset($_POST['isAdmin']) ? 1 : 0;  // Set isAdmin based on checkbox
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("INSERT INTO user (email, password, username, isAdmin) VALUES (?, ?, ?, 0)");
-    $stmt->bind_param("sss", $email, $hashedPassword, $username);
+    $stmt = $conn->prepare("INSERT INTO user (email, password, username, isAdmin) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("sssi", $email, $hashedPassword, $username, $isAdmin);
 
     if ($stmt->execute()) {
-        $_SESSION['user_id'] = $email;
+        $_SESSION['user_id'] = $userId;
+        $_SESSION['username'] = $username;
+        $_SESSION['isAdmin'] = $isAdmin;
         header('Location: index.php');
         exit();
     } else {
@@ -23,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
     $stmt->close();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -68,6 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
     <input type="email" name="email" required><br>
     <label>Password:</label><br>
     <input type="password" name="password" required><br>
+    <label>
+        <input type="checkbox" name="isAdmin" value="1">
+        Register as Admin
+    </label><br>
     <input type="submit" name="register" value="Register"><br>
     <?php if (isset($error)) echo "<p class='error'>$error</p>"; ?>
 </form>

@@ -6,18 +6,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT username,id,password FROM user WHERE email = ?");
+    $stmt = $conn->prepare("SELECT username,id,password,isAdmin FROM user WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($username, $userId,$hashedPassword);
+        $stmt->bind_result($username, $userId,$hashedPassword,$isAdmin);
         $stmt->fetch();
 
         if (password_verify($password, $hashedPassword)) {
             $_SESSION['user_id'] = $userId;
             $_SESSION['username'] = $username;
+            $_SESSION['isAdmin'] = $isAdmin;
             header('Location: index.php');
             exit();
         } else {

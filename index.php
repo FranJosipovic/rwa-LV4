@@ -1,6 +1,5 @@
 <?php
 include 'includes/auth.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +28,9 @@ include 'includes/auth.php';
           <li class="active"><a href="index.php">Pocetna</a></li>
           <li><a href="slike.php">Galerija</a></li>
           <li><a href="grafikon.html">Grafikon</a></li>
+          <?php if ($_SESSION['isAdmin'] == 1) { ?>
+              <li><a href="admin.php">Admin</a></li>
+            <?php } ?>
         </ul>
         <div class="dropdown">
           <i class="fa fa-bars"></i>
@@ -36,6 +38,9 @@ include 'includes/auth.php';
             <li class="active"><a href="index.php">Pocetna</a></li>
             <li><a href="slike.php">Galerija</a></li>
             <li><a href="grafikon.html">Grafikon</a></li>
+            <?php if ($_SESSION['isAdmin'] == 1) { ?>
+              <li><a href="admin.php">Admin</a></li>
+            <?php } ?>
           </ul>
         </div>
       </nav>
